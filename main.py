@@ -1,6 +1,6 @@
 import sys
 import pygame
-from constants import SCREEN_HEIGHT, SCREEN_WIDTH
+from constants import SCREEN_HEIGHT, SCREEN_WIDTH, ASTEROID_MIN_RADIUS
 from logger import log_state, log_event
 from player import Player
 from shot import Shot
@@ -52,7 +52,7 @@ def main():
             for shot in shots:
                 if asteroid.collides_with(shot):
                     log_event("asteroid_shot")
-                    asteroid.kill()
+                    asteroid.split()
                     shot.kill()
         # draw
         screen.fill("black")
